@@ -37,19 +37,20 @@ class Log10 extends Operation1 {
 
 class Ln extends Operation1 {
   public function operate() {
-    return ln($this->operand_1);
+    return log($this->operand_1, exp(1));
   }
   public function getEquation() {
     return 'ln(' . $this->operand_1 .') = ' . $this->operate();
   }
 }
 
-abstract class Tenexp extends Operation1 implements Exponent{
+class Tenexp extends Operation1 implements Exponent{
+  public function operate() {}
   public function expo() {
     return pow(10, $this->operand_1);
   }
   public function getEquation() {
-    return '10^' . $this->operand_1 . ' = ' . $this->exp();
+    return '10^' . $this->operand_1 . ' = ' . $this->expo();
   }
 }
 
@@ -202,7 +203,7 @@ class ExponentClass extends Operation2 {
     }
 
     if (isset($_POST['expo']) && $_POST['expo'] == 'Exponent') {
-      $op = new Exponent($o1);
+      $op = new ExponentClass($o1);
     }
 
     if (isset($_POST['log10']) && $_POST['log10'] == 'Log10') {
