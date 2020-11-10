@@ -85,7 +85,11 @@ class ExponentY extends Operation2 implements Exponent{
   }
 }
 
+<<<<<<< Updated upstream
 // Some debugs - uncomment these to see what is happening...
+=======
+//Some debugs - uncomment these to see what is happening...
+>>>>>>> Stashed changes
 // echo '$_POST print_r=>',print_r($_POST);
 // echo "<br>",'$_POST vardump=>',var_dump($_POST);
 // echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
@@ -144,6 +148,7 @@ class ExponentY extends Operation2 implements Exponent{
 <title>PHP Calculator</title>
 </head>
 <body>
+	<h1>Konami Calculator</h1>
   <pre id="result">
   <?php
     if (isset($op)) {
@@ -161,15 +166,46 @@ class ExponentY extends Operation2 implements Exponent{
   ?>
   </pre>
   <form method="post" action="calculator.php">
-    <input type="text" name="op1" id="name" value="" />
+    <input type="text" name="op1" id="name" value="" autofocus/>
     <input type="text" name="op2" id="name" value="" />
     <br/>
     <!-- Only one of these will be set with their respective value at a time -->
+<<<<<<< Updated upstream
     <input type="submit" name="add" value="Add" />
     <input type="submit" name="sub" value="Subtract" />
     <input type="submit" name="mult" value="Multiply" />
     <input type="submit" name="divi" value="Divide" />
     <input type="submit" name="expo" value="Exponent" />
+=======
+		<div class="left">
+			<div class="leftrow">
+				<input type="submit" name="add" value="Add" />
+		    <input type="submit" name="sub" value="Subtract" />
+		    <input type="submit" name="mult" value="Multiply" />
+			</div>
+			<div class="leftrowend">
+				<input type="submit" name="divi" value="Divide" />
+		    <input type="submit" name="expo" value="Exponent" />
+			</div>
+		</div>
+		<div class="right">
+			<div class="rightrow">
+				<input type="submit" name="square" value="Square" />
+				<input type="submit" name="sqrt" value="Sqrt" />
+		    <input type="submit" name="log10" value="Log10" />
+			</div>
+			<div class="rightrow">
+				<input type="submit" name="ln" value="Ln" />
+		    <input type="submit" name="tenexp" value="10^x" />
+		    <input type="submit" name="eexp" value="e^x" />
+			</div>
+			<div class="rightrow">
+				<input type="submit" name="sin" value="Sin" />
+		    <input type="submit" name="cos" value="Cos" />
+		    <input type="submit" name="tan" value="Tan" />
+			</div>
+		</div>
+>>>>>>> Stashed changes
   </form>
 </body>
 </html>
