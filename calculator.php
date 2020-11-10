@@ -1,6 +1,7 @@
 <?php
-interface Exponent {
-  public function expo($o1, $o2);
+interface operations {
+  public function operate();
+  public function getEquation();
 }
 
 abstract class Operation1 {
@@ -9,40 +10,20 @@ abstract class Operation1 {
     if (!is_numeric($o1)) {
       throw new Exception('Non-numeric operand.');
     }
-
     $this->operand_1 = $o1;
   }
-  public abstract function operate();
-  public abstract function getEquation();
 }
-/*
-class Exponent2 extends Operation1 implements Exponent {
-  public function power($o1, $o2) {
-    return pow($o1, $o2);
-  }
+
+class Square extends Operation1 implements operations {
   public function operate() {
-    return power($this->operand_1, 2);
+      return pow($this->operand_1, 2);
   }
   public function getEquation() {
-    return $this->operand_1 . ' ^ 2 = ' . $this->operate();
-  }
-}
-*/
-
-
-class Square extends Operation1 implements Exponent {
-	public function expo($o1, $o2) {
-    return pow($o1, $o2);
-  }
-  public function operate() {
-    return expo($this->operand_1, 2);
-  }
-  public function getEquation() {
-    return $this->operand_1 . ' ^2 = ' . $this->operate();
+    return $this->operand_1 . '^2 ' . ' = ' . $this->operate();
   }
 }
 
-class Log10 extends Operation1 {
+class Log10 extends Operation1 implements operations {
   public function operate() {
     return log10($this->operand_1);
   }
@@ -51,7 +32,7 @@ class Log10 extends Operation1 {
   }
 }
 
-class Ln extends Operation1 {
+class Ln extends Operation1 implements operations {
   public function operate() {
     return log($this->operand_1, exp(1));
   }
@@ -60,28 +41,26 @@ class Ln extends Operation1 {
   }
 }
 
-class Tenexp extends Operation1 implements Exponent{
-	public function expo($o1, $o2) {
-    return pow($o1, $o2);
-  }
+class Tenexp extends Operation1 implements operations {
   public function operate() {
-    return expo(10, $this->operand_1);
+    return pow(10, $this->operand_1);
   }
+
   public function getEquation() {
     return '10^' . $this->operand_1 . ' = ' . $this->operate();
   }
 }
 
-class Eexp extends Operation1 {
+class Eexp extends Operation1 implements operations {
   public function operate() {
-    return exp(2);
+    return exp($this->operand_1);
   }
   public function getEquation() {
     return 'e^' . $this->operand_1 . ' = ' . $this->operate();
   }
 }
 
-class Sin extends Operation1 {
+class Sin extends Operation1 implements operations {
   public function operate() {
     return sin($this->operand_1);
   }
@@ -90,7 +69,7 @@ class Sin extends Operation1 {
   }
 }
 
-class Cos extends Operation1 {
+class Cos extends Operation1 implements operations {
   public function operate() {
     return cos($this->operand_1);
   }
@@ -99,7 +78,7 @@ class Cos extends Operation1 {
   }
 }
 
-class Tan extends Operation1 {
+class Tan extends Operation1 implements operations {
   public function operate() {
     return tan($this->operand_1);
   }
@@ -121,12 +100,10 @@ abstract class Operation2 {
     $this->operand_1 = $o1;
     $this->operand_2 = $o2;
   }
-  public abstract function operate();
-  public abstract function getEquation();
 }
 
 // Addition subclass inherits from Operation2
-class Addition extends Operation2 {
+class Addition extends Operation2 implements operations {
   public function operate() {
     return $this->operand_1 + $this->operand_2;
   }
@@ -137,7 +114,7 @@ class Addition extends Operation2 {
 
 
 // Add subclasses for Subtraction, Multiplication and Division here
-class Subtraction extends Operation2 {
+class Subtraction extends Operation2 implements operations {
   public function operate() {
     return $this->operand_1 - $this->operand_2;
   }
@@ -146,7 +123,7 @@ class Subtraction extends Operation2 {
   }
 }
 
-class Multiplication extends Operation2 {
+class Multiplication extends Operation2 implements operations {
   public function operate() {
     return $this->operand_1 * $this->operand_2;
   }
@@ -155,7 +132,7 @@ class Multiplication extends Operation2 {
   }
 }
 
-class Division extends Operation2 {
+class Division extends Operation2 implements operations {
   public function operate() {
     return $this->operand_1 / $this->operand_2;
   }
@@ -164,20 +141,20 @@ class Division extends Operation2 {
   }
 }
 
-class ExponentClass extends Operation2 {
+class ExponentClass extends Operation2 implements operations {
   public function operate() {
     return pow($this->operand_1, $this->operand_2);
   }
   public function getEquation() {
-    return $this->operand_1 . '^' . $this->operand_2 . ' = ' . $this->operate();
+    return $this->operand_1 . ' ^ ' . $this->operand_2 . ' = ' . $this->operate();
   }
 }
 
-// Some debugs - uncomment these to see what is happening...
-// echo '$_POST print_r=>',print_r($_POST);
-// echo "<br>",'$_POST vardump=>',var_dump($_POST);
-// echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
-// echo "<br/>---";
+//Some debugs - uncomment these to see what is happening...
+echo '$_POST print_r=>',print_r($_POST);
+echo "<br>",'$_POST vardump=>',var_dump($_POST);
+echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
+echo "<br/>---";
 
 
 // Check to make sure that POST was received
@@ -236,7 +213,7 @@ class ExponentClass extends Operation2 {
       $op = new Tenexp($o1);
     }
 
-    if (isset($_POST['eexp']) && $_POST['eexp'] == 'Eexp') {
+    if (isset($_POST['eexp']) && $_POST['eexp'] == 'e^x') {
       $op = new Eexp($o1);
     }
 
@@ -288,8 +265,8 @@ class ExponentClass extends Operation2 {
     <input type="submit" name="sub" value="Subtract" />
     <input type="submit" name="mult" value="Multiply" />
     <input type="submit" name="divi" value="Divide" />
-    <input type="submit" name="square" value="Square" />
     <input type="submit" name="expo" value="Exponent" />
+    <input type="submit" name="square" value="Square" />
     <input type="submit" name="log10" value="Log10" />
     <input type="submit" name="ln" value="Ln" />
     <input type="submit" name="tenexp" value="10^x" />
