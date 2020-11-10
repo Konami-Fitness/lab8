@@ -10,7 +10,9 @@ displays the user's input and answer.
 
 FORM HANDLING
 ----------
-
+There are two input fields. If the user is using one of the operations, they will only need to fill out the first one, then select the operation. If they are using an operation 
+that requires two operands, they must fill out both fields. When the operation button is selected, we use $_POST to collect the values and store the first in $o1 and the second in 
+$o2. Then the Operation1 and Operation2 classes assign those values to the member variables of their class.
 
 
 CREATIVITY
