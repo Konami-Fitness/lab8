@@ -7,11 +7,11 @@ interface operations {
 abstract class Operation1 {
   protected $operand_1;
   public function __construct($o1) {
-		if (strcmp($o1, 'pi') == 0) {
-			$o1 = pi();
-		} else if (strcmp($o1, 'e') == 0) {
-			$o1 = exp(1);
-		}
+    if (strcmp($o1, 'pi') == 0) {
+      $o1 = pi();
+    } else if (strcmp($o1, 'e') == 0) {
+      $o1 = exp(1);
+    }
     if (!is_numeric($o1)) {
       throw new Exception('Non-numeric operand.');
     }
@@ -25,6 +25,15 @@ class Square extends Operation1 implements operations {
   }
   public function getEquation() {
     return $this->operand_1 . '^2 = ' . $this->operate();
+  }
+}
+
+class SquareRoot extends Operation1 implements operations {
+  public function operate() {
+      return sqrt($this->operand_1);
+  }
+  public function getEquation() {
+    return 'sqrt(' . $this->operand_1 . ') = ' . $this->operate();
   }
 }
 
@@ -97,16 +106,16 @@ abstract class Operation2 {
   protected $operand_2;
   public function __construct($o1, $o2) {
     // Make sure we're working with numbers...
-		if (strcmp($o1, 'pi') == 0) {
-			$o1 = pi();
-		} else if (strcmp($o1, 'e') == 0) {
-			$o1 = exp(1);
-		}
-		if (strcmp($o2, 'pi') == 0) {
-			$o2 = pi();
-		} else if (strcmp($o2, 'e') == 0) {
-			$o2 = exp(1);
-		}
+    if (strcmp($o1, 'pi') == 0) {
+      $o1 = pi();
+    } else if (strcmp($o1, 'e') == 0) {
+      $o1 = exp(1);
+    }
+    if (strcmp($o2, 'pi') == 0) {
+      $o2 = pi();
+    } else if (strcmp($o2, 'e') == 0) {
+      $o2 = exp(1);
+    }
     if (!is_numeric($o1) || !is_numeric($o2)) {
       throw new Exception('Non-numeric operand.');
     }
@@ -149,7 +158,7 @@ class Multiplication extends Operation2 implements operations {
 
 class Division extends Operation2 implements operations {
   public function operate() {
-		if ($this->operand_2 == 0) {
+    if ($this->operand_2 == 0) {
       throw new Exception('Can\'t divide by zero!');
     }
     return $this->operand_1 / $this->operand_2;
@@ -213,6 +222,10 @@ echo "<br/>---";
 
     if (isset($_POST['square']) && $_POST['square'] == 'Square') {
       $op = new Square($o1);
+    }
+
+    if (isset($_POST['sqrt']) && $_POST['sqrt'] == 'Sqrt') {
+      $op = new SquareRoot($o1);
     }
 
     if (isset($_POST['expo']) && $_POST['expo'] == 'Exponent') {
@@ -285,6 +298,7 @@ echo "<br/>---";
     <input type="submit" name="divi" value="Divide" />
     <input type="submit" name="expo" value="Exponent" />
     <input type="submit" name="square" value="Square" />
+    <input type="submit" name="sqrt" value="Sqrt" />
     <input type="submit" name="log10" value="Log10" />
     <input type="submit" name="ln" value="Ln" />
     <input type="submit" name="tenexp" value="10^x" />
