@@ -19,7 +19,7 @@ class Square extends Operation1 implements operations {
       return pow($this->operand_1, 2);
   }
   public function getEquation() {
-    return $this->operand_1 . '^2 ' . ' = ' . $this->operate();
+    return $this->operand_1 . '^2 = ' . $this->operate();
   }
 }
 
