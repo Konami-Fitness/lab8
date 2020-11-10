@@ -178,10 +178,10 @@ class ExponentClass extends Operation2 implements operations {
 }
 
 //Some debugs - uncomment these to see what is happening...
-// echo '$_POST print_r=>',print_r($_POST);
-// echo "<br>",'$_POST vardump=>',var_dump($_POST);
-// echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
-// echo "<br/>---";
+echo '$_POST print_r=>',print_r($_POST);
+echo "<br>",'$_POST vardump=>',var_dump($_POST);
+echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
+echo "<br/>---";
 
 
 // Check to make sure that POST was received
@@ -271,7 +271,6 @@ class ExponentClass extends Operation2 implements operations {
 		<title>PHP Calculator</title>
 	</head>
 	<body>
-		<h1>Konami Calculator</h1>
 	  <pre id="result">
 	  <?php
 	    if (isset($op)) {
