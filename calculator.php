@@ -10,6 +10,7 @@ abstract class Operation1 {
     if (!is_numeric($o1)) {
       throw new Exception('Non-numeric operand.');
     }
+
     $this->operand_1 = $o1;
   }
 }
@@ -134,10 +135,18 @@ class Multiplication extends Operation2 implements operations {
 
 class Division extends Operation2 implements operations {
   public function operate() {
+    if ($this->operand_2 == 0) {
+      return 'Error: Cannot divide by zero.';
+    }
     return $this->operand_1 / $this->operand_2;
   }
   public function getEquation() {
+    if ($this->operand_2 != 0) {
     return $this->operand_1 . ' / ' . $this->operand_2 . ' = ' . $this->operate();
+    }
+    if ($this->operand_2 == 0) {
+      return $this->operate();
+    }
   }
 }
 
