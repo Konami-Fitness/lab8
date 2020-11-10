@@ -1,0 +1,112 @@
+html * {
+	box-sizing: border-box;
+	font-family: "Raleway", "Quicksand", helvetica, sans-serif;
+}
+
+body {
+	background-color: #fbfbfc;
+	font-size: 14px;
+}
+
+label {
+	color: #9190a2;
+}
+
+p {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+ul {
+	text-align: center;
+	color: #9190a2;
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link {
+	color: #4285f4;
+}
+
+a:visited {
+	color: #4285f4;
+}
+
+a:hover {
+	color: #2467d6;
+}
+
+.loginbox {
+	margin: auto;
+	width: 420px;/* 420px; */
+	height: 500px; /* 595px */
+	margin-top: 50px;
+	margin-bottom: 35px;
+	padding: 32px;
+	border: 1px solid #e7e2f2;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.left{
+  float:left;
+}
+
+.clear{
+  clear:both;
+}
+
+input[type=text], input[type=password] {
+	height: 40px;
+  border: 1px solid #8f8fa1;
+  border-radius: 3px;
+	background-color: #e8f0fe;
+	margin: 5px 0px 15px 0px ;
+	padding: 0px 18px;
+}
+
+input[type=submit] {
+	height: 40px;
+	width: 100%;
+	border: none;
+  border-radius: 4px;
+	background-color: #4285f4;
+	margin: 5px 0px 15px 0px;
+	color: white;
+}
+
+#fname {
+	margin-right: 14px;
+	margin-bottom: 0px;
+}
+
+#lname {
+	margin-bottom: 0px;
+}
+
+#email {
+	width: 100%;
+}
+
+#password {
+	width: 100%;
+}
+
+/* Password: <input type="password" value="FakePSW" id="myInput"><br><br>
+<input type="checkbox" onclick="myFunction()">Show Password
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script> */
