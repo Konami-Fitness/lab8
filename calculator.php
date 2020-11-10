@@ -271,6 +271,7 @@ echo "<br/>---";
 		<title>PHP Calculator</title>
 	</head>
 	<body>
+		<h1>Konami Calculator</h1>
 	  <pre id="result">
 	  <?php
 	    if (isset($op)) {
