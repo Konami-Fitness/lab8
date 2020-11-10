@@ -25,12 +25,14 @@ form {
 	width: 500px;
 }
 
-input[type=text], input[type=password] {
+input[type=text] {
 	height: 30px;
   border: 1px solid #8f8fa1;
   border-radius: 3px;
 	background-color: #e8f0fe;
 	padding: 0px 18px;
+	margin: auto;
+	width: 48%;
 }
 
 input[type=submit] {
