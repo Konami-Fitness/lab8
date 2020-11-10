@@ -1,0 +1,23 @@
+PHP
+----------
+We used two different abstract classes depending on whether the operation requires 
+one or two operands (Operation1 and Operation2). Both classes first check
+that the number of operands is correct, and then does error checking for
+the inputs. 
+
+For each operation, we implemented classes that extend either Operation1 
+or Operation2. Each of these classes also implements the operations 
+interface. The operations interface specifies the operate() and
+getEquation() methods that are implemented in each class. The operate()
+method performs the calculations in each class and the getEquation() 
+displays the user's input and answer.
+
+
+FORM HANDLING
+----------
+
+
+
+CREATIVITY
+----------
+We added some extra conditions to the error checking in the Operation1 and Operation2 classes. Before checking that the user's input is numeric, we added code to check if the user input is e or pi, in which case we use the appropriate value in the calculations (2.17... for e and 3.14... for pi). We also prevented dividing by zero errors by adding some error checking in the Division class.
