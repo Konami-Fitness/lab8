@@ -1,3 +1,4 @@
+<?php
 interface operations {
   public function operate();
   public function getEquation();
@@ -24,6 +25,15 @@ class Square extends Operation1 implements operations {
   }
   public function getEquation() {
     return $this->operand_1 . '^2 = ' . $this->operate();
+  }
+}
+
+class SquareRoot extends Operation1 implements operations {
+  public function operate() {
+      return sqrt($this->operand_1);
+  }
+  public function getEquation() {
+    return 'sqrt(' . $this->operand_1 . ') = ' . $this->operate();
   }
 }
 
@@ -214,6 +224,10 @@ echo "<br/>---";
       $op = new Square($o1);
     }
 
+		if (isset($_POST['sqrt']) && $_POST['sqrt'] == 'Sqrt') {
+      $op = new SquareRoot($o1);
+    }
+
     if (isset($_POST['expo']) && $_POST['expo'] == 'Exponent') {
       $op = new ExponentClass($o1, $o2);
     }
@@ -278,19 +292,34 @@ echo "<br/>---";
 	    <input type="text" name="op2" id="name" value="" />
 	    <br/>
 	    <!-- Only one of these will be set with their respective value at a time -->
-	    <input type="submit" name="add" value="Add" />
-	    <input type="submit" name="sub" value="Subtract" />
-	    <input type="submit" name="mult" value="Multiply" />
-	    <input type="submit" name="divi" value="Divide" />
-	    <input type="submit" name="expo" value="Exponent" />
-	    <input type="submit" name="square" value="Square" />
-	    <input type="submit" name="log10" value="Log10" />
-	    <input type="submit" name="ln" value="Ln" />
-	    <input type="submit" name="tenexp" value="10^x" />
-	    <input type="submit" name="eexp" value="e^x" />
-	    <input type="submit" name="sin" value="Sin" />
-	    <input type="submit" name="cos" value="Cos" />
-	    <input type="submit" name="tan" value="Tan" />
+			<div class="left">
+				<div class="leftrow">
+					<input type="submit" name="add" value="Add" />
+					<input type="submit" name="sub" value="Subtract" />
+					<input type="submit" name="mult" value="Multiply" />
+				</div>
+				<div class="leftrowend">
+					<input type="submit" name="divi" value="Divide" />
+					<input type="submit" name="expo" value="Exponent" />
+				</div>
+			</div>
+			<div class="right">
+				<div class="rightrow">
+					<input type="submit" name="square" value="Square" />
+					<input type="submit" name="sqrt" value="Sqrt" />
+					<input type="submit" name="log10" value="Log10" />
+				</div>
+				<div class="rightrow">
+					<input type="submit" name="ln" value="Ln" />
+					<input type="submit" name="tenexp" value="10^x" />
+					<input type="submit" name="eexp" value="e^x" />
+				</div>
+				<div class="rightrow">
+					<input type="submit" name="sin" value="Sin" />
+					<input type="submit" name="cos" value="Cos" />
+					<input type="submit" name="tan" value="Tan" />
+				</div>
+			</div>
 	  </form>
 	</body>
 </html>
