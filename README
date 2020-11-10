@@ -5,18 +5,20 @@ operands is correct, and then does error checking for the inputs.
 
 For each operation, we implemented classes that extend either Operation1 or Operation2. Each of these classes also implements the operations interface. The operations interface
 specifies the operate() and getEquation() methods that are implemented in each class. The operate() method performs the calculations in each class and the getEquation() 
-displays the user's input and answer.
+displays the user's input and answer.  Every mathematical operation is going to need to operate on 1 or 2 operands and pull an equation from it. Because this is common for all the
+operations, we felt it would be best if used polymorphism and made an interface to cover the general functionality of the operations along with an abstract class to handle the 
+setting of operands for the operations.  
 
 
 FORM HANDLING
 ----------
 There are two input fields. If the user is using one of the operations, they will only need to fill out the first one, then select the operation. If they are using an operation 
 that requires two operands, they must fill out both fields. When the operation button is selected, we use $_POST to collect the values and store the first in $o1 and the second in 
-$o2. Then the Operation1 and Operation2 classes assign those values to the member variables of their class.
+$o2. Then the Operation1 and Operation2 classes assign those values to the member variables of their class. 
 
 
 CREATIVITY
 ----------
 We added some extra conditions to the error checking in the Operation1 and Operation2 classes. Before checking that the user's input is numeric, we added code to check if the user
 input is e or pi, in which case we use the appropriate value in the calculations (2.17... for e and 3.14... for pi). We also prevented dividing by zero errors by adding some error
-checking in the Division class.
+checking in the Division class. 
