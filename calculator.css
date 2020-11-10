@@ -12,12 +12,29 @@ label {
 	color: #9190a2;
 }
 
-p {
-	font-size: 20px;
-	font-weight: bold;
+h1 {
+	text-align: center;
 }
 
-ul {
+form {
+	margin: auto;
+	text-align: center;
+	width: 500px;
+}
+
+#result {
+	text-align: center;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+/* ul {
 	text-align: center;
 	color: #9190a2;
 	list-style-type: none;
@@ -43,8 +60,8 @@ a:hover {
 
 .loginbox {
 	margin: auto;
-	width: 420px;/* 420px; */
-	height: 500px; /* 595px */
+	width: 420px;
+	height: 500px;
 	margin-top: 50px;
 	margin-bottom: 35px;
 	padding: 32px;

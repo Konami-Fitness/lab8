@@ -178,10 +178,10 @@ class ExponentClass extends Operation2 implements operations {
 }
 
 //Some debugs - uncomment these to see what is happening...
-echo '$_POST print_r=>',print_r($_POST);
-echo "<br>",'$_POST vardump=>',var_dump($_POST);
-echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
-echo "<br/>---";
+// echo '$_POST print_r=>',print_r($_POST);
+// echo "<br>",'$_POST vardump=>',var_dump($_POST);
+// echo '<br/>$_POST is ', (isset($_POST) ? 'set' : 'NOT set'), "<br/>";
+// echo "<br/>---";
 
 
 // Check to make sure that POST was received
@@ -268,59 +268,64 @@ echo "<br/>---";
 <!doctype html>
 <html>
 	<head>
-		<title>PHP Calculator</title>
+		<title>Konami Calculator</title>
+		<link rel=stylesheet href="calculator.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		<h1>Konami Calculator</h1>
-	  <pre id="result">
-	  <?php
-	    if (isset($op)) {
-	      try {
-	        echo $op->getEquation();
-	      }
-	      catch (Exception $e) {
-	        $err[] = $e->getMessage();
-	      }
-	    }
+    <div class="calcbox">
+      <pre id="result">
+  	  <?php
+  	    if (isset($op)) {
+  	      try {
+  	        echo $op->getEquation();
+  	      }
+  	      catch (Exception $e) {
+  	        $err[] = $e->getMessage();
+  	      }
+  	    }
 
-	    foreach($err as $error) {
-	        echo $error . "\n";
-	    }
-	  ?>
-	  </pre>
-	  <form method="post" action="calculator.php">
-	    <input type="text" name="op1" id="name" value="" />
-	    <input type="text" name="op2" id="name" value="" />
-	    <br/>
-	    <!-- Only one of these will be set with their respective value at a time -->
-			<div class="left">
-				<div class="leftrow">
-					<input type="submit" name="add" value="Add" />
-					<input type="submit" name="sub" value="Subtract" />
-					<input type="submit" name="mult" value="Multiply" />
-				</div>
-				<div class="leftrowend">
-					<input type="submit" name="divi" value="Divide" />
-					<input type="submit" name="expo" value="Exponent" />
-				</div>
-			</div>
-			<div class="right">
-				<div class="rightrow">
-					<input type="submit" name="square" value="Square" />
-					<input type="submit" name="sqrt" value="Sqrt" />
-					<input type="submit" name="log10" value="Log10" />
-				</div>
-				<div class="rightrow">
-					<input type="submit" name="ln" value="Ln" />
-					<input type="submit" name="tenexp" value="10^x" />
-					<input type="submit" name="eexp" value="e^x" />
-				</div>
-				<div class="rightrow">
-					<input type="submit" name="sin" value="Sin" />
-					<input type="submit" name="cos" value="Cos" />
-					<input type="submit" name="tan" value="Tan" />
-				</div>
-			</div>
-	  </form>
+  	    foreach($err as $error) {
+  	        echo $error . "\n";
+  	    }
+  	  ?>
+  	  </pre>
+  	  <form method="post" action="calculator.php">
+  	    <input type="text" name="op1" id="name" value="" />
+  	    <input type="text" name="op2" id="name" value="" />
+  	    <br/>
+  	    <!-- Only one of these will be set with their respective value at a time -->
+  			<div class="left">
+  				<div class="leftrow">
+  					<input type="submit" name="add" value="Add" />
+  					<input type="submit" name="sub" value="Subtract" />
+  					<input type="submit" name="mult" value="Multiply" />
+  				</div>
+  				<div class="leftrowend">
+  					<input type="submit" name="divi" value="Divide" />
+  					<input type="submit" name="expo" value="Exponent" />
+  				</div>
+  			</div>
+  			<div class="right">
+  				<div class="rightrow">
+  					<input type="submit" name="square" value="Square" />
+  					<input type="submit" name="sqrt" value="Sqrt" />
+  					<input type="submit" name="log10" value="Log10" />
+  				</div>
+  				<div class="rightrow">
+  					<input type="submit" name="ln" value="Ln" />
+  					<input type="submit" name="tenexp" value="10^x" />
+  					<input type="submit" name="eexp" value="e^x" />
+  				</div>
+  				<div class="rightrow">
+  					<input type="submit" name="sin" value="Sin" />
+  					<input type="submit" name="cos" value="Cos" />
+  					<input type="submit" name="tan" value="Tan" />
+  				</div>
+  			</div>
+  	  </form>
+    </div>
 	</body>
 </html>
